@@ -1,3 +1,9 @@
+# Run in Docker
+```bash
+	docker-compose up --build -Vd nginx mediaserver
+	docker-compose up --build -Vd stream
+```
+
 ### Minimum Requirements 
 - Debian 10+
 - 512mb RAM
