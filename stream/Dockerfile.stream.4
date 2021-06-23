@@ -1,0 +1,5 @@
+FROM hoagnetwork/ffmpeg:1.0
+
+COPY images images
+
+ENTRYPOINT ffmpeg -i http://audio.exmaple.stream.com  -acodec libmp3lame -ab "128k" -ac 2 -ar 44100 -f flv rtmp://stream.hoag.network/live/

@@ -23,8 +23,26 @@ services:
     ports:
       - "1935:1935"
 
-  stream:
+  stream1:
     build:
       context: ./stream
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.stream.1
+    restart: always
+
+  stream2:
+    build:
+      context: ./stream
+      dockerfile: Dockerfile.stream.2
+    restart: always
+
+  stream3:
+    build:
+      context: ./stream
+      dockerfile: Dockerfile.stream.3
+    restart: always
+
+  stream4:
+    build:
+      context: ./stream
+      dockerfile: Dockerfile.stream.4
     restart: always

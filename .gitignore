@@ -2,3 +2,5 @@ node_modules/
 media/
 /data/certbot
 config.js 
+*.mp3
+*.mp4

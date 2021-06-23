@@ -1,7 +1,7 @@
 # Run in Docker
 ```bash
 	docker-compose up --build -Vd nginx mediaserver
-	docker-compose up --build -Vd stream
+	docker-compose up --build -Vd stream1 stream2 stream3 stream4
 ```
 
 ### Minimum Requirements 
