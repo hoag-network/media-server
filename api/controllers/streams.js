@@ -38,7 +38,7 @@ function genStreams(req, res, next) {
   var md5 = CryptoJS.SHA256(global.gConfig.passphrase+"/live/"+name).toString();
   var key = name+"?pwd="+md5.substring(0,6);
 
-  res.json({name:name, key:key, rtmp_url:global.gConfig.rtmp_url, cdn_url:global.gConfig.cdn_url });
+  res.json({name:name, key:key, rtmp_url:global.gConfig.rtmp_url+"/live/", cdn_url:global.gConfig.cdn_url });
 }
 
 function getStreams(req, res, next) {
