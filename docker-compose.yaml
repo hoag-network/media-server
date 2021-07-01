@@ -23,6 +23,14 @@ services:
     ports:
       - "1935:1935"
 
+  admin:
+    build: 
+      context: ./admin/admin-server
+      dockerfile: Dockerfile
+    volumes:
+      - ./admin/config.js:/config.js
+    restart: always
+
   stream1:
     build:
       context: ./stream
