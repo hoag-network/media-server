@@ -179,6 +179,7 @@ function delStream(req, res, next) {
   }
 }
 
+exports.genStreams = genStreams;
 exports.delStream = delStream;
 exports.getStreams = getStreams;
 exports.getStream = getStream;
