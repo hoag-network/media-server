@@ -2,6 +2,8 @@ const NodeMediaServer = require('./');
 const config = require('./config');
 const CryptoJS = require("crypto-js");
 
+global.gConfig = config;
+
 var nms = new NodeMediaServer(config)
 nms.run();
 
