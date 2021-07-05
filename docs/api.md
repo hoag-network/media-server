@@ -93,7 +93,3 @@ returns info of specific stream
     "startTime":null
 }
 ```
-
-#### /streams/live/{stream_id}
-
-#### /streams/live/{stream_id}
