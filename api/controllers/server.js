@@ -87,7 +87,7 @@ function getInfo(req, res, next) {
         speed: OS.cpus()[0].speed,
       },
       mem: {
-        totle: OS.totalmem(),
+        total: OS.totalmem(),
         free: OS.freemem()
       },
       net: {

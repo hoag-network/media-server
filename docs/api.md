@@ -6,12 +6,17 @@
 
 ### Streams
 
-#### /api/private/streams/creds
+#### /streams/creds
 
 ##### GET
 
 ##### description
 creates stream and shows information
+
+##### example 
+```bash
+curl -X GET -u "admin:admin" -H "Content-Type: application/json" "http://45.76.89.160/api/private/streams/creds"
+```
 
 ##### response
 ```
@@ -22,6 +27,106 @@ creates stream and shows information
     "cdn_url":"http://domain"
 }
 ```
+
+#### /streams/{app_id}/{stream_id}
+
+##### DELETE
+
+##### example 
+```bash
+curl -X DELETE -u "admin:admin" -H "Content-Type: application/json" "http://45.76.89.160/api/private/streams/live/R6JgLuee"
+```
+##### description
+`interrupt a stream`
+
+##### response
+```"ok"```
+
+##### error
+```
+{"error":"stream not found"}
+```
+
+#### /streams/trans
+
+##### POST
+
+##### example 
+```bash
+curl -X POST -u "admin:admin" -H "Content-Type: application/json" "http://45.76.89.160/api/private/streams/trans"
+```
+##### description
+`create trans`
+
+##### error
+```
+{"message":"Failed creating stream"}
+```
+
+### Server
+
+#### /server
+
+##### GET
+
+##### example 
+```bash
+curl -X GET -u "admin:admin" -H "Content-Type: application/json" "http://45.76.89.160/api/private/server"
+```
+##### description
+`get server information`
+
+##### response
+```
+{
+    "os":{
+        "arch":"x64",
+        "platform":"linux",
+        "release":"5.4.0-73-generic"
+    },
+    "cpu":{
+        "num":1,
+        "load":0,
+        "model":"Intel Core Processor (Broadwell, no TSX, IBRS)",
+        "speed":2394
+    },
+    "mem":{
+        "total":1028841472,
+        "free":92803072
+    },
+    "net":{
+        "inbytes":140988368,
+        "outbytes":145320402
+    },
+    "nodejs":{
+        "uptime":16718,
+        "version":"v15.14.0",
+        "mem":{
+            "rss":82567168,
+            "heapTotal":17637376,
+            "heapUsed":11276232,
+            "external":2374763,
+            "arrayBuffers":1455437
+        }
+    },
+    "clients":{
+        "accepted":18,
+        "active":8,
+        "idle":0,
+        "rtmp":8,
+        "http":0,
+        "ws":0
+    },
+    "version":"0.0.1"
+}
+```
+
+### Relay (pending APIs)
+
+#### GET /relay
+#### POST /relay/pull
+#### POST /relay/push
+
 
 ## Public API
 /api/public
@@ -93,3 +198,4 @@ returns info of specific stream
     "startTime":null
 }
 ```
+
