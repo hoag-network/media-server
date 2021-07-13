@@ -1,7 +1,7 @@
 ## Getting started with MEDIA SERVER in DOCKER
 
 ### 1. Create a Server based on minimum requirements 
- * Debian 10+
+ * ubuntu 20.04
  * 512mb RAM
  * 1 Core
 
@@ -53,13 +53,6 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io -y
 ```bash
 sudo curl -L "https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
-```
-
-
-##### Add docker to a user you want (optional)
-```bash
-useradd -g users -s `which bash` -m app
-sudo usermod -a -G docker app
 ```
 
 ### 3. Run Service
@@ -136,7 +129,7 @@ mv ffmpeg ffprobe /usr/bin/;
 ### 3. Clone Media Server Git Repository
 ```bash
 cd ~; \
-git clone https://github.com/mediafoundation/mediaserver.git; \
+git clone https://github.com/hoag-network/media-server.git mediaserver ; \
 cd mediaserver; \
 npm i
 ```
@@ -150,7 +143,3 @@ node app.js
 ```
 
 ---
-
-### Credits
-
-Media Server is a fork of illuspas' [Node-Media-Server](https://github.com/illuspas/Node-Media-Server), a Node.js modified implementation of RTMP/HTTP-FLV/WS-FLV/HLS/DASH Media Server Based on Arut's [nginx RTMP Module](https://github.com/arut/nginx-rtmp-module).
