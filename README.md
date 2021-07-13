@@ -66,7 +66,10 @@ sudo chmod +x /usr/local/bin/docker-compose
 	git clone https://github.com/hoag-network/media-server.git mediaserver
 	cd mediaserver
 
-#### 3.3 Run docker compose services
+#### 3.3 Update config
+    cp config.js.default config.js
+
+#### 3.4 Run docker compose services
 
 ```bash
 	docker-compose up --build -Vd nginx mediaserver
@@ -80,7 +83,11 @@ Open a web browser and go to your server IP address, you will see your Media Ser
 http://YOUR.IP.ADDRESS/
 ```
 
-### 5. Using Media Network to scale your Media Server (optional)
+### 5. Install SSL (optional)
+[continue]()
+
+
+### 6. Using Media Network to scale your Media Server (optional)
 
 Optionally, to scale up your streaming plaform to million of users and make it available through a truly powerful and decentralized CDN, you can register your server as a resource on Media Network through the [Media Network App](https://app.media.network). Follow [this tutorial](https://docs.media.network/app-setup) using your server IP address as the origin server to do so.
 
@@ -102,10 +109,6 @@ const config = {
 :::info
 Make sure to restart your Media Server instance after editing the configuration file, as it's required to apply changes.
 :::
-
-### 6. Install SSL (optional)
-[continue]()
-
 
 ## Getting started with MEDIA SERVER from scratch
 
