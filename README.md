@@ -84,7 +84,7 @@ http://YOUR.IP.ADDRESS/
 ```
 
 ### 5. Install SSL (optional)
-[continue]()
+[continue](https://github.com/hoag-network/media-server/blob/development/docs/install_ssl.md)
 
 
 ### 6. Using Media Network to scale your Media Server (optional)
