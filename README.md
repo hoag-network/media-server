@@ -1,4 +1,4 @@
-
+![HOAG](https://hoag.network/images/hoag-bars-square.gif)
 <h3 align="center">
 <a href="https://hoag.network">Website</a>
 </h3>
