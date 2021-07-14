@@ -1,16 +1,14 @@
+
 ![HOAG](https://hoag.network/images/hoag-bars-square.gif)
-<h3 align="center">
-<a href="https://hoag.network">Website</a>
-</h3>
 
 
-# HOAG 
+[Hoag Network](https://hoag.network) plug'n play products enable live streaming platforms to keep ownership of their content.
 
-Hoag Network products enable censorship-resistant channels for live streaming content.
+Our code leverages peer-to-peer technology from [Solana Blockchain](https://solana.com) & [Media Network](https://media.network).
 
 ## Media-Server
 
-Backend implementation of RTMP/HTTP-FLV/WS-FLV/HLS/DASH for api retrieval of live streams.
+Backend infrastructue of RTMP/HTTP-FLV/WS-FLV/HLS/DASH for live video streams.
 
 
 ## Documentation
