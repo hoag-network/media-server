@@ -4,3 +4,6 @@ media/
 config.js 
 *.mp3
 *.mp4
+
+# Mac specific
+.DS_Store
