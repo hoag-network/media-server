@@ -13,7 +13,9 @@ Hoag Network products enable censorship-resistant channels for live streaming co
 Backend implementation of RTMP/HTTP-FLV/WS-FLV/HLS/DASH for api retrieval of live streams.
 
 
-## Index
+## Documentation
 
-1. [Documentation](../docs)
-2. [Api](../docs/api.md)
+1. [Installation](./docs)
+	1. [Install daemon](./docs/installation.md)
+	2. [Install with docker](.docs/installation_docker.md)
+2. [Api](./docs/api.md)
