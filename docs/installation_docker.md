@@ -6,6 +6,7 @@
  * 1 Core
 
 A VM from any cloud provider like Vultr, GCP, AWS as well as any dedicated server with Ubuntu would work
+In case you need to know how to install and connect to an server instance click [here](https://github.com/hoag-network/media-server/blob/development/docs/install_connect_server.md) 
 
 ### 2. Install docker and docker compose
 
