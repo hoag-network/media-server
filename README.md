@@ -15,5 +15,5 @@ Backend infrastructue of RTMP/HTTP-FLV/WS-FLV/HLS/DASH for live video streams.
 
 1. [Installation](./docs)
 	1. [Install daemon](./docs/installation.md)
-	2. [Install with docker](.docs/installation_docker.md)
+	2. [Install with docker](./docs/installation_docker.md)
 2. [Api](./docs/api.md)
