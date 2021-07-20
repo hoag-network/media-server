@@ -74,7 +74,11 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 ```bash
 	docker-compose up --build -Vd nginx mediaserver
-	docker-compose up --build -Vd stream1 stream2 stream3 stream4
+```
+
+#### 3.5 Start a stream with docker compose
+```bash
+	docker-compose up --build -Vd stream1
 ```
 
 ### 4. Testing the server
