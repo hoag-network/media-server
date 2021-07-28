@@ -16,6 +16,7 @@ const context = require('./node_core_ctx');
 const ip = require("ip");
 
 const streamsRoute = require('./api/routes/streams');
+const streamsPrivateRoute = require('./api/routes/private/streams');
 const serverRoute = require('./api/routes/server');
 const relayRoute = require('./api/routes/relay');
 
@@ -72,15 +73,7 @@ class NodeHttpServer {
 
     app.get('/', (req, res) => {
       res.header("Cache-Control", "no-store, max-age=0");
-      var name = '';
-      var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-      var charactersLength = characters.length;
-      for ( var i = 0; i < 8; i++ ) {
-        name += characters.charAt(Math.floor(Math.random() * charactersLength));
-      }
-      var md5 = CryptoJS.SHA256(this.config.passphrase+"/live/"+name).toString();
-      var key = name+"?pwd="+md5.substring(0,6);
-      res.render("views/index.html", {name:name,key:key,rtmp_url:this.config.rtmp_url,cdn_url:this.config.cdn_url});
+      res.render("views/index.html");
     });
     
     app.get('/v/:id', (req, res) => {
@@ -89,11 +82,12 @@ class NodeHttpServer {
     
     if (this.config.http.api !== false) {
       if (this.config.auth && this.config.auth.api) {
-        app.use(['/api/*', '/admin/*'], basicAuth(this.config.auth.api_user, this.config.auth.api_pass));
+        app.use(['/api/private/*', '/admin/*'], basicAuth(this.config.auth.api_user, this.config.auth.api_pass));
       }
-      app.use('/api/streams', streamsRoute(context));
-      app.use('/api/server', serverRoute(context));
-      app.use('/api/relay', relayRoute(context));
+      app.use('/api/public/streams', streamsRoute(context));
+      app.use('/api/private/streams', streamsPrivateRoute(context));
+      app.use('/api/private/server', serverRoute(context));
+      app.use('/api/private/relay', relayRoute(context));
     }
 
     app.use(Express.static(path.join(__dirname + '/public')));

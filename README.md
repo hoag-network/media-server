@@ -1,82 +1,23 @@
-# Run in Docker
-```bash
-	docker-compose up --build -Vd nginx mediaserver
-	docker-compose up --build -Vd stream1 stream2 stream3 stream4
-```
 
-### Minimum Requirements 
-- Debian 10+
-- 512mb RAM
-- 1 Core
-
-### Install System Tools and Node.js
-```bash
-apt update; \
-apt install -y git curl nano xz-utils; \
-curl -sL https://deb.nodesource.com/setup_15.x | bash -; \
-apt install -y nodejs
-```
-
-### Install FFmpeg
-```bash
-cd /tmp; \
-wget https://media.network/static/ffmpeg-release-amd64-static.tar.xz; \
-tar xvf ffmpeg-release-amd64-static.tar.xz; \
-cd /tmp/ffmpeg-*/; \
-mv ffmpeg ffprobe /usr/bin/;
-```
-
-### Clone Media Server Git Repository
- ```bash
-cd ~; \
-git clone https://github.com/mediafoundation/mediaserver.git; \
-cd mediaserver; \
-npm i
-```
-
-### Running the App
-
-Make sure you are on the correct path, and run the following command to start your Media Server:
-
-```bash
-node app.js
-```
-
-### Testing the server
-
-Open a web browser and go to your server IP address, you will see your Media Server home page if everything is setup correctly.
-```
-http://YOUR.IP.ADDRESS/
-```
-[ ![Home Page](https://docs.media.network/img/mediaserverexp.png) ](https://docs.media.network/img/mediaserverexp.png)
+![HOAG](https://hoag.network/images/hoag-bars-square.gif)
 
 
-### Using Media Network to scale your Media Server
+[Hoag Network](https://hoag.network) plug'n play products enable live streaming platforms to keep ownership of their content.
 
-Optionally, to scale up your streaming plaform to million of users and make it available through a truly powerful and decentralized CDN, you can register your server as a resource on Media Network through the [Media Network App](https://app.media.network). Follow [this tutorial](https://docs.media.network/app-setup) using your server IP address as the origin server to do so.
+Our code leverages peer-to-peer technology from [Solana Blockchain](https://solana.com) & [Media Network](https://media.network).
 
-#### Editing the config to use your generated Media Network subdomain
+## Media-Server
 
-After adding your origin server IP address to Media Network, a new random subdomain will be assigned to you. The next step is editing the config file of your Media Server, assigning this newly generated domain as the CDN layer for your server.
-
-```bash
-nano config.js
-```
-
-```js title="mediaserver/config.js"
-const config = {
-//...
-  cdn_url: "https://Resource_ID.medianet.work",
-//...
-```
-
-:::info
-Make sure to restart your Media Server instance after editing the configuration file, as it's required to apply changes.
-:::
+Backend infrastructue of RTMP/HTTP-FLV/WS-FLV/HLS/DASH for live video streams.
 
 
----
+## Documentation
 
-### Credits
-
-Media Server is a fork of illuspas' [Node-Media-Server](https://github.com/illuspas/Node-Media-Server), a Node.js modified implementation of RTMP/HTTP-FLV/WS-FLV/HLS/DASH Media Server Based on Arut's [nginx RTMP Module](https://github.com/arut/nginx-rtmp-module).
+1. [Installation](./docs)
+	1. [Install daemon](./docs/installation.md)
+	2. [Install with docker](./docs/installation_docker.md)
+2. [Api](./docs/api)
+	1. [Private api](./docs/api/private_api.md)
+	1. [Public api](./docs/api/public_api.md)
+3. [Stream](./docs/streaming)
+	1. [Stream with docker](./docs/streaming/start_docker.md)

@@ -1,5 +1,6 @@
 const _ = require("lodash");
 const NodeTransServer = require("../../node_trans_server");
+const CryptoJS = require("crypto-js");
 
 function postStreamTrans(req, res, next) {
   let config = req.body;
@@ -24,6 +25,20 @@ function postStreamTrans(req, res, next) {
     res.status(404);
     res.json({ message: "Failed creating stream" });
   }
+}
+
+function genStreams(req, res, next) {
+  res.header("Cache-Control", "no-store, max-age=0");
+  var name = '';
+  var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  var charactersLength = characters.length;
+  for ( var i = 0; i < 8; i++ ) {
+    name += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  var md5 = CryptoJS.SHA256(global.gConfig.passphrase+"/live/"+name).toString();
+  var key = name+"?pwd="+md5.substring(0,6);
+
+  res.json({name:name, key:key, rtmp_url:global.gConfig.rtmp_url+"/live/", cdn_url:global.gConfig.cdn_url });
 }
 
 function getStreams(req, res, next) {
@@ -164,6 +179,7 @@ function delStream(req, res, next) {
   }
 }
 
+exports.genStreams = genStreams;
 exports.delStream = delStream;
 exports.getStreams = getStreams;
 exports.getStream = getStream;
