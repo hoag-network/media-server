@@ -1,4 +1,4 @@
-FROM debian:estable
+FROM <%= @config['Docker']['image'] %>
 
 RUN apt update; \
     apt install -y git curl wget nano xz-utils; \
