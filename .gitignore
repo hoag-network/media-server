@@ -4,6 +4,7 @@ media/
 config.js 
 *.mp3
 *.mp4
+Dockerfile
 
 # Mac specific
 .DS_Store
