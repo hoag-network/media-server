@@ -1,5 +1,5 @@
 Docker:
-  image: debian:estable 
+  image: debian:stable 
   
 
 
