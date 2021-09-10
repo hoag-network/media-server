@@ -1,13 +1,13 @@
 const QueryString = require("querystring");
-const AV = require("./node_core_av");
-const { AUDIO_SOUND_RATE, AUDIO_CODEC_NAME, VIDEO_CODEC_NAME } = require("./node_core_av");
+const AV = require("../core/av");
+const { AUDIO_SOUND_RATE, AUDIO_CODEC_NAME, VIDEO_CODEC_NAME } = require("../core/av");
 
-const AMF = require("./node_core_amf");
-const Handshake = require("./node_rtmp_handshake");
-const NodeCoreUtils = require("./node_core_utils");
-const NodeFlvSession = require("./node_flv_session");
-const context = require("./node_core_ctx");
-const Logger = require("./node_core_logger");
+const AMF = require("../core/amf");
+const Handshake = require("./rtmp_handshake");
+const NodeCoreUtils = require("../core/utils");
+const NodeFlvSession = require("./flv_session");
+const context = require("../core/ctx");
+const Logger = global.Logger;
 
 const N_CHUNK_STREAM = 8;
 const RTMP_VERSION = 3;

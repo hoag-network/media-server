@@ -1,12 +1,12 @@
-const Logger = require('./node_core_logger');
+const Logger = global.Logger;
 
 const Tls = require('tls');
 const Fs = require('fs');
 const Net = require('net');
-const NodeRtmpSession = require('./node_rtmp_session');
-const NodeCoreUtils = require('./node_core_utils');
+const NodeRtmpSession = require('../sessions/rtmp_session');
+const NodeCoreUtils = require('../core/utils');
 
-const context = require('./node_core_ctx');
+const context = require('../core/ctx');
 
 const RTMP_PORT = 1935;
 const RTMPS_PORT = 443;

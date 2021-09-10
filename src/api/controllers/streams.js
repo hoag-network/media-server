@@ -1,5 +1,5 @@
 const _ = require("lodash");
-const NodeTransServer = require("../../node_trans_server");
+const NodeTransServer = require("../../servers/trans_server");
 const CryptoJS = require("crypto-js");
 
 function postStreamTrans(req, res, next) {

@@ -1,4 +1,4 @@
-const Logger = require('./node_core_logger');
+const Logger = global.Logger;
 
 const Crypto = require('crypto');
 

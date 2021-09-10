@@ -1,8 +1,13 @@
-const NodeMediaServer = require('./');
-const config = require('./config');
-const CryptoJS = require("crypto-js");
+const config = require('./config/config');
+const Logger = require('./core/logger');
 
+// Configuración de variables globales
 global.gConfig = config;
+global.Logger = Logger;
+global.BasePath = __dirname;
+
+const NodeMediaServer = require('./');
+const CryptoJS = require("crypto-js");
 
 var nms = new NodeMediaServer(config)
 nms.run();

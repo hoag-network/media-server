@@ -7,18 +7,19 @@ const Express = require('express');
 const bodyParser = require('body-parser');
 const basicAuth = require('basic-auth-connect');
 const CryptoJS = require("crypto-js");
-const NodeFlvSession = require('./node_flv_session');
+const NodeFlvSession = require('../sessions/flv_session');
 const HTTP_PORT = 80;
 const HTTPS_PORT = 443;
 const HTTP_MEDIAROOT = './media';
-const Logger = require('./node_core_logger');
-const context = require('./node_core_ctx');
+const Logger = global.Logger;
+const auth = require('../middleware/auth');
+const context = require('../core/ctx');
 const ip = require("ip");
 
-const streamsRoute = require('./api/routes/streams');
-const streamsPrivateRoute = require('./api/routes/private/streams');
-const serverRoute = require('./api/routes/server');
-const relayRoute = require('./api/routes/relay');
+const streamsRoute = require('../api/routes/streams');
+const streamsPrivateRoute = require('../api/routes/private/streams');
+const serverRoute = require('../api/routes/server');
+const relayRoute = require('../api/routes/relay');
 
 class NodeHttpServer {
   constructor(config) {
@@ -28,10 +29,10 @@ class NodeHttpServer {
 
     if(this.config.cdn_url === false){
       this.config.cdn_url = "http://"+ip.address();
-    } 
+    }
     if(this.config.rtmp_url === false){
       this.config.rtmp_url = "rtmp://"+ip.address();
-    } 
+    }
 
     let app = Express();
     app.use(bodyParser.json());
@@ -75,14 +76,16 @@ class NodeHttpServer {
       res.header("Cache-Control", "no-store, max-age=0");
       res.render("views/index.html");
     });
-    
+
+    app.post('/login', auth.login);
+
     app.get('/v/:id', (req, res) => {
       res.render("views/channel.html", {name:req.params.id,cdn_url:this.config.cdn_url});
     });
-    
+
     if (this.config.http.api !== false) {
       if (this.config.auth && this.config.auth.api) {
-        app.use(['/api/private/*', '/admin/*'], basicAuth(this.config.auth.api_user, this.config.auth.api_pass));
+        app.use(['/api/private/*', '/admin/*'], auth.verifyToken);
       }
       app.use('/api/public/streams', streamsRoute(context));
       app.use('/api/private/streams', streamsPrivateRoute(context));

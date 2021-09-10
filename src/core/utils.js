@@ -2,7 +2,7 @@ const Crypto = require('crypto');
 const EventEmitter = require('events');
 const { spawn } = require('child_process');
 const readline = require('readline');
-const context = require('./node_core_ctx');
+const context = require('./ctx');
 
 function generateNewSessionID() {
   let sessionID = '';

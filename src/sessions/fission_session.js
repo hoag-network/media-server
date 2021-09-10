@@ -1,4 +1,4 @@
-const Logger = require('./node_core_logger');
+const Logger = global.Logger;
 
 const EventEmitter = require('events');
 const { spawn } = require('child_process');

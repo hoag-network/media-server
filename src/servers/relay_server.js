@@ -1,9 +1,9 @@
-const Logger = require('./node_core_logger');
+const Logger = global.Logger;
 
-const NodeCoreUtils = require('./node_core_utils');
-const NodeRelaySession = require('./node_relay_session');
-const context = require('./node_core_ctx');
-const { getFFmpegVersion, getFFmpegUrl } = require('./node_core_utils');
+const NodeCoreUtils = require('../core/utils');
+const NodeRelaySession = require('../sessions/relay_session');
+const context = require('../core/ctx');
+const { getFFmpegVersion, getFFmpegUrl } = require('../core/utils');
 const fs = require('fs');
 const _ = require('lodash');
 

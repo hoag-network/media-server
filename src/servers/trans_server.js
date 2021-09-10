@@ -1,8 +1,8 @@
-const Logger = require('./node_core_logger');
+const Logger = global.Logger;
 
-const NodeTransSession = require('./node_trans_session');
-const context = require('./node_core_ctx');
-const { getFFmpegVersion, getFFmpegUrl } = require('./node_core_utils');
+const NodeTransSession = require('../sessions/trans_session');
+const context = require('../core/ctx');
+const { getFFmpegVersion, getFFmpegUrl } = require('../core/utils');
 const fs = require('fs');
 const _ = require('lodash');
 const mkdirp = require('mkdirp');

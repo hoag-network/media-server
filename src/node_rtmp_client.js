@@ -1,9 +1,9 @@
 const EventEmitter = require('events');
-const Logger = require('./node_core_logger');
+const Logger = global.Logger;
 const Crypto = require('crypto');
 const Url = require('url');
 const Net = require('net');
-const AMF = require('./node_core_amf');
+const AMF = require('./core/amf');
 
 const FLASHVER = "LNX 9,0,124,2";
 const RTMP_OUT_CHUNK_SIZE = 60000;

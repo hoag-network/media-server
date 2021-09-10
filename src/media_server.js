@@ -1,12 +1,13 @@
 const Https = require('https');
-const Logger = require('./node_core_logger');
-const NodeRtmpServer = require('./node_rtmp_server');
-const NodeHttpServer = require('./node_http_server');
-const NodeTransServer = require('./node_trans_server');
-const NodeRelayServer = require('./node_relay_server');
-const NodeFissionServer = require('./node_fission_server');
-const context = require('./node_core_ctx');
+const Logger = global.Logger;
+const NodeRtmpServer = require('./servers/rtmp_server');
+const NodeHttpServer = require('./servers/http_server');
+const NodeTransServer = require('./servers/trans_server');
+const NodeRelayServer = require('./servers/relay_server');
+const NodeFissionServer = require('./servers/fission_server');
+const context = require('./core/ctx');
 const Package = require("./package.json");
+
 
 class NodeMediaServer {
   constructor(config) {
