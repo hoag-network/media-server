@@ -1,3 +1,4 @@
+[![Built](https://github.com/hoag-network/media-server/workflows/Built/badge.svg)](https://github.com/hoag-network/media-server/actions?query=workflow%3ABuilt)
 
 ![HOAG](https://hoag.network/images/hoag-bars-square.gif)
 
