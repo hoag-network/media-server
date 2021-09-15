@@ -1,4 +1,4 @@
-const NodeRtmpClient = require('../node_rtmp_client');
+const NodeRtmpClient = require('./rtmp_client');
 
 let rc = new NodeRtmpClient('rtmp://192.168.0.10/live/stream');
 let rp = new NodeRtmpClient('rtmp://192.168.0.20/live/stream');

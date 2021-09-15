@@ -85,12 +85,12 @@ class NodeHttpServer {
 
     if (this.config.http.api !== false) {
       if (this.config.auth && this.config.auth.api) {
-        app.use(['/api/private/*', '/admin/*'], auth.verifyToken);
+        app.use(['/api/v1/private/*', '/api/v1/admin/*'], auth.verifyToken);
       }
-      app.use('/api/public/streams', streamsRoute(context));
-      app.use('/api/private/streams', streamsPrivateRoute(context));
-      app.use('/api/private/server', serverRoute(context));
-      app.use('/api/private/relay', relayRoute(context));
+      app.use('/api/v1/public/streams', streamsRoute(context));
+      app.use('/api/v1/private/streams', streamsPrivateRoute(context));
+      app.use('/api/v1/private/server', serverRoute(context));
+      app.use('/api/v1/private/relay', relayRoute(context));
     }
 
     app.use(Express.static(path.join(__dirname + '/public')));
