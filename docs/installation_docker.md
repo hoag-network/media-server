@@ -65,7 +65,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 #### 3.2 Clone repoistory
 	git clone https://github.com/hoag-network/media-server.git mediaserver
-	cd mediaserver
+	cd mediaserver/src
 
 #### 3.3 Update config
     cp config.js.default config.js

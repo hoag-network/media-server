@@ -86,7 +86,7 @@
 			"response": []
 		},
 		{
-			"name": "public/streams",
+			"name": "public/v1/streams",
 			"request": {
 				"method": "GET",
 				"header": [
@@ -98,7 +98,7 @@
 					}
 				],
 				"url": {
-					"raw": "127.0.0.1/api/public/streams",
+					"raw": "127.0.0.1/api/v1/public/streams",
 					"host": [
 						"127",
 						"0",
@@ -107,6 +107,7 @@
 					],
 					"path": [
 						"api",
+						"v1",
 						"public",
 						"streams"
 					]
@@ -115,7 +116,7 @@
 			"response": []
 		},
 		{
-			"name": "private/streams/creds",
+			"name": "private/v1/streams/creds",
 			"request": {
 				"method": "GET",
 				"header": [
@@ -126,7 +127,7 @@
 					}
 				],
 				"url": {
-					"raw": "127.0.0.1/api/private/streams/creds",
+					"raw": "127.0.0.1/api/v1/private/streams/creds",
 					"host": [
 						"127",
 						"0",
@@ -135,6 +136,7 @@
 					],
 					"path": [
 						"api",
+						"v1",
 						"private",
 						"streams",
 						"creds"
@@ -144,7 +146,7 @@
 			"response": []
 		},
 		{
-			"name": "private/streams/trans",
+			"name": "private/v1/streams/trans",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -155,7 +157,7 @@
 					}
 				],
 				"url": {
-					"raw": "127.0.0.1/api/private/streams/trans",
+					"raw": "127.0.0.1/api/v1/private/streams/trans",
 					"host": [
 						"127",
 						"0",
@@ -164,6 +166,7 @@
 					],
 					"path": [
 						"api",
+						"v1",
 						"private",
 						"streams",
 						"trans"
@@ -173,7 +176,7 @@
 			"response": []
 		},
 		{
-			"name": "private/server",
+			"name": "private/v1/server",
 			"request": {
 				"method": "GET",
 				"header": [
@@ -184,7 +187,7 @@
 					}
 				],
 				"url": {
-					"raw": "127.0.0.1/api/private/server",
+					"raw": "127.0.0.1/api/v1/private/server",
 					"host": [
 						"127",
 						"0",
@@ -193,6 +196,7 @@
 					],
 					"path": [
 						"api",
+						"v1",
 						"private",
 						"server"
 					]
@@ -201,7 +205,7 @@
 			"response": []
 		},
 		{
-			"name": "private/relay",
+			"name": "private/v1/relay",
 			"request": {
 				"method": "GET",
 				"header": [
@@ -212,7 +216,7 @@
 					}
 				],
 				"url": {
-					"raw": "127.0.0.1/api/private/relay",
+					"raw": "127.0.0.1/api/v1/private/relay",
 					"host": [
 						"127",
 						"0",
@@ -221,6 +225,7 @@
 					],
 					"path": [
 						"api",
+						"v1",
 						"private",
 						"relay"
 					]
@@ -229,7 +234,7 @@
 			"response": []
 		},
 		{
-			"name": "private/relay/push",
+			"name": "private/v1/relay/push",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -240,7 +245,7 @@
 					}
 				],
 				"url": {
-					"raw": "127.0.0.1/api/private/relay/push",
+					"raw": "127.0.0.1/api/v1/private/relay/push",
 					"host": [
 						"127",
 						"0",
@@ -249,6 +254,7 @@
 					],
 					"path": [
 						"api",
+						"v1",
 						"private",
 						"relay",
 						"push"
@@ -258,7 +264,7 @@
 			"response": []
 		},
 		{
-			"name": "private/relay/pull",
+			"name": "private/v1/relay/pull",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -269,7 +275,7 @@
 					}
 				],
 				"url": {
-					"raw": "127.0.0.1/api/private/relay/pull",
+					"raw": "127.0.0.1/api/v1/private/relay/pull",
 					"host": [
 						"127",
 						"0",
@@ -278,6 +284,7 @@
 					],
 					"path": [
 						"api",
+						"v1",
 						"private",
 						"relay",
 						"pull"

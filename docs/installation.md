@@ -22,7 +22,7 @@ mv ffmpeg ffprobe /usr/bin/;
 ```bash
 cd ~; \
 git clone https://github.com/hoag-network/media-server.git mediaserver ; \
-cd mediaserver; \
+cd mediaserver/src; \
 npm i
 ```
 
