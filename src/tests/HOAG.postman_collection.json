@@ -6,7 +6,34 @@
 	},
 	"item": [
 		{
-			"name": "Login",
+			"name": "/api/v1/public/streams",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "{{token}}",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{host}}/api/v1/public/streams",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"public",
+						"streams"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v1/private/login",
 			"event": [
 				{
 					"listen": "test",
@@ -38,11 +65,14 @@
 					]
 				},
 				"url": {
-					"raw": "{{host}}/login",
+					"raw": "{{host}}/api/v1/private/login",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
+						"api",
+						"v1",
+						"private",
 						"login"
 					],
 					"query": [
@@ -57,34 +87,7 @@
 			"response": []
 		},
 		{
-			"name": "public/v1/streams",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "x-access-token",
-						"value": "{{token}}",
-						"type": "text",
-						"disabled": true
-					}
-				],
-				"url": {
-					"raw": "{{host}}/api/v1/public/streams",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"api",
-						"v1",
-						"public",
-						"streams"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "private/v1/streams/creds",
+			"name": "/api/v1/private/streams/creds",
 			"request": {
 				"method": "GET",
 				"header": [
@@ -111,7 +114,7 @@
 			"response": []
 		},
 		{
-			"name": "private/v1/streams/trans",
+			"name": "/api/v1/private/streams/trans",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -138,7 +141,7 @@
 			"response": []
 		},
 		{
-			"name": "private/v1/server",
+			"name": "/api/v1/private/v1/server",
 			"request": {
 				"method": "GET",
 				"header": [
@@ -164,7 +167,7 @@
 			"response": []
 		},
 		{
-			"name": "private/v1/relay",
+			"name": "/api/v1/private/v1/relay",
 			"request": {
 				"method": "GET",
 				"header": [
@@ -190,7 +193,7 @@
 			"response": []
 		},
 		{
-			"name": "private/v1/relay/push",
+			"name": "/api/v1/private/v1/relay/push",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -217,7 +220,7 @@
 			"response": []
 		},
 		{
-			"name": "private/v1/relay/pull",
+			"name": "/api/v1/private/v1/relay/pull",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -270,12 +273,12 @@
 		},
 		{
 			"key": "host",
-			"value": "",
-			"disabled": true
+			"value": ""
 		},
 		{
 			"key": "host",
-			"value": ""
+			"value": "",
+			"disabled": true
 		}
 	]
 }
