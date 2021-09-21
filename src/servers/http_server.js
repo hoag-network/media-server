@@ -65,7 +65,7 @@ class NodeHttpServer {
       this.onConnect(req, res);
     });
 
-    app.post('/api/v1/private/login', auth.login);
+    app.post('/api/v1/public/login', auth.login);
 
     app.get('/v/:id', (req, res) => {
       res.render("views/channel.html", {name:req.params.id,cdn_url:this.config.cdn_url});

@@ -65,14 +65,14 @@
 					]
 				},
 				"url": {
-					"raw": "{{host}}/api/v1/private/login",
+					"raw": "{{host}}/api/v1/public/login",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"api",
 						"v1",
-						"private",
+						"public",
 						"login"
 					],
 					"query": [
