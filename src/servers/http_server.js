@@ -65,18 +65,6 @@ class NodeHttpServer {
       this.onConnect(req, res);
     });
 
-    let adminEntry = path.join(__dirname + '/public/admin/index.html');
-    if (Fs.existsSync(adminEntry)) {
-      app.get('/admin/*', (req, res) => {
-        res.sendFile(adminEntry);
-      });
-    }
-
-    app.get('/', (req, res) => {
-      res.header("Cache-Control", "no-store, max-age=0");
-      res.render("views/index.html");
-    });
-
     app.post('/login', auth.login);
 
     app.get('/v/:id', (req, res) => {
@@ -85,7 +73,7 @@ class NodeHttpServer {
 
     if (this.config.http.api !== false) {
       if (this.config.auth && this.config.auth.api) {
-        app.use(['/api/v1/private/*', '/api/v1/admin/*'], auth.verifyToken);
+        app.use(['/api/v1/private/*'], auth.verifyToken);
       }
       app.use('/api/v1/public/streams', streamsRoute(context));
       app.use('/api/v1/private/streams', streamsPrivateRoute(context));
