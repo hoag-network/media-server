@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -e
+
+use_tag="<%= @config['Docker']['dockerhub_id'] %>/<%= @config['Docker']['repo_name'] %>:<%= @config['Docker']['version'] %>"
+
+docker build -t "$use_tag" .

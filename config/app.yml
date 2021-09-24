@@ -1,0 +1,10 @@
+Docker:
+  image: debian:stable 
+  repo_name: media-server
+  dockerhub_id: hoagnetwork
+  version: 0.2.2
+  maintainer: Hoagnetwork
+
+  
+
+

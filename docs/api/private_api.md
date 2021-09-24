@@ -2,11 +2,17 @@
 # Private HOAG media server API
 
 ## Authentication
-Currently only admin can authenticate into the app. You can find the credentials in the `config.js` file installed in the first steps.
+Currently only admin can authenticate into the app. You can find the credentials in the `config.js` file installed in the first steps. The default an unique auth mechanism is JWT, is necessary get a JWT token and send this in each petition on private API. 
 
-### Basic authentication
+All private API endpoints expect that the token will be send on x-access-token header.
+
+In the folder src/test you have the file HOAG.postman_collection.json with a full suite of test that you can run in postman.
+
+# The next lines will be updated, plese referer to file /src/test/HOAG.postman_collection.json
+
+### JWT authentication
 ```bash
-curl -X GET -u "username:password" "http://{domain}/api/private/streams/creds"
+curl -X POST p-u "username:password" "http://{domain}/api/private/streams/creds"
 ```
 
 ## API

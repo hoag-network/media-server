@@ -4,7 +4,7 @@
 ## API
 *Remember to replace the string `{domain}` with your application's domain or IP*
 
-### GET /api/public/streams
+### GET /api/v1/public/streams
 
 #### description
 
@@ -51,7 +51,7 @@ returns list of channels with information
 }
 ```
 
-### GET /api/public/streams/live/{stream_id}
+### GET /api/v1/public/streams/live/{stream_id}
 
 #### description
 
