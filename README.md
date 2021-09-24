@@ -1,6 +1,6 @@
 [![Built](https://github.com/hoag-network/media-server/workflows/Built/badge.svg)](https://github.com/hoag-network/media-server/actions?query=workflow%3ABuilt)
 
-![HOAG](https://hoag.network/images/hoag-bars-square.gif)
+![HOAG](https://github.com/hoag-network/media-server/blob/main/docs/img/hoag-bars-square.gif)
 
 
 [Hoag Network](https://hoag.network) plug'n play products enable live streaming platforms to keep ownership of their content.
