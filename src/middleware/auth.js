@@ -41,10 +41,10 @@ const login = (req, res) => {
       }
 
       // user
-      res.json(response);
+      res.status(200).json(response);
     }
     else{
-      res.json({'error': "Invalid Credentials"});
+      res.status(400).json({'error': "Invalid Credentials"});
     }
   } catch (err) {
     console.log(err);

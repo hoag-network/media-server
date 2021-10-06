@@ -15,6 +15,7 @@ const Logger = global.Logger;
 const auth = require('../middleware/auth');
 const context = require('../core/ctx');
 const ip = require("ip");
+const cors=require("cors");
 
 const streamsRoute = require('../api/routes/streams');
 const streamsPrivateRoute = require('../api/routes/private/streams');
@@ -35,9 +36,15 @@ class NodeHttpServer {
     }
 
     let app = Express();
+    const corsOptions ={
+        origin:'*', 
+        credentials:true,            //access-control-allow-credentials:true
+        optionSuccessStatus:200,
+    }
     app.use(bodyParser.json());
 
     app.use(bodyParser.urlencoded({ extended: true }));
+    app.use(cors(corsOptions)) // Use this after the variable declaration
     app.engine('html', require('ejs').renderFile);
     app.set('view engine', 'html');
     app.set('views', __dirname);
