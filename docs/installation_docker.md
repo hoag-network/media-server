@@ -19,6 +19,7 @@ Docker compose follow steps: [docker compose](https://docs.docker.com/compose/in
 Here is a summary
 
 #### 2.1 SET UP THE REPOSITORY
+
 ```bash
 sudo apt-get update -y
 sudo apt-get install  -y \
@@ -43,60 +44,57 @@ sudo add-apt-repository \
  stable"
 ```
 
-#### 2.2 INSTALL DOCKER ENGINE
+#### 2.2 Install Docker Engine
 
 ```bash
 sudo apt-get update  -y
 sudo apt-get install docker-ce docker-ce-cli containerd.io -y
 ```
 
-#### 2.3 INSTALL COMPOSE
-```bash
-sudo curl -L "https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
-```
+#### 2.3 Build
 
-### 3. Run Service
-
-#### 3.1 Create user for app deploy
-	useradd -g users -s `which bash` -m app
-	sudo usermod -a -G docker app
-	su - app
-
-#### 3.2 Clone repoistory
-	git clone https://github.com/hoag-network/media-server.git mediaserver
-	cd mediaserver/src
-
-#### 3.3 Update config
-    cp config.js.default config.js
-
-#### 3.4 Run docker compose services
+Install Ruby:
 
 ```bash
-	docker-compose up --build -Vd nginx mediaserver
+# Debian and derivates
+apt-get install ruby
+# Alpine
+apk add ruby
+# Arch and derivates
+pacman -S ruby
+# Fedora and derivates
+dnf install ruby
+# or
+yum install ruby
 ```
 
-#### 3.5 Start a stream with docker compose
+Install rake:
+
 ```bash
-	docker-compose up --build -Vd stream1
+# Debian and derivates
+apt-get install rake
+# Alpine
+apk add rake
+# Arch and derivates
+pacman -S rubygem-rake
+# Fedora and derivates
+dnf install rubygem-rake
+# or
+yum install rubygem-rake
+
+# Using ruby gem
+gem install rake
 ```
 
-### 4. Testing the server
+On the root dir for this repo, execute `rake render`
 
-Open a web browser and go to your server IP address, you will see your Media Server home page if everything is setup correctly.
-```
-http://YOUR.IP.ADDRESS/
-```
+Modify this [file](../config/app.yml) with the appropiate data  for increment the app  version an rebuilt con rake.
 
-### 5. Install SSL (optional)
-[continue](https://github.com/hoag-network/media-server/blob/development/docs/install_ssl.md)
-
-
-### 6. Using Media Network to scale your Media Server (optional)
+### 3. Using Media Network to scale your Media Server (optional)
 
 Optionally, to scale up your streaming plaform to million of users and make it available through a truly powerful and decentralized CDN, you can register your server as a resource on Media Network through the [Media Network App](https://app.media.network). Follow [this tutorial](https://docs.media.network/app-setup) using your server IP address as the origin server to do so.
 
-#### 5.1 Editing the config to use your generated Media Network subdomain
+#### 4, Editing the config to use your generated Media Network subdomain
 
 After adding your origin server IP address to Media Network, a new random subdomain will be assigned to you. The next step is editing the config file of your Media Server, assigning this newly generated domain as the CDN layer for your server.
 
@@ -114,3 +112,9 @@ const config = {
 :::info
 Make sure to restart your Media Server instance after editing the configuration file, as it's required to apply changes.
 :::
+
+### 5. Publish a new version
+
+Rake generate two scripts for help to publish in Dockerhub, its are execute when upload almost a commit to master/main in the remote repository. but if you wants upload a image you can execute [this scrpit](../scripts/build-push.sh). Is necessary set two environment variables $DOCKER_USERNAME and $DOCKER_PASSWORD.
+
+For work correctly in github is necessary create this two variables how secrets in the project,
