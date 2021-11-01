@@ -2,8 +2,6 @@ name: Built
 
 on:
   push:
-    branches:
-      - main
     tags:
       - 'v*'
 
@@ -34,5 +32,14 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+  publish:
+    name: Publish on production
+    runs-on: ['self-hosted', 'prod']
+    steps:
+      - name: Upload prod
+        uses: jdickey/bash@v.1.1.1
+        with:
+          args: cd ${{ secrets.HOAGDAX_PATH }} && git pull hoagnetwork/media-server:latest && docker-compose rm -sf back && docker-compose up -d --force-recreate 
+    
         
       
