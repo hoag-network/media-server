@@ -11,6 +11,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Test build Image
-        run: bash scripts/build.sh
+        run: bash scripts/build-push.sh
         env:
           NAME: latest
