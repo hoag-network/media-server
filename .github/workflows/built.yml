@@ -35,11 +35,12 @@ jobs:
   publish:
     name: Publish on production
     runs-on: ['self-hosted', 'prod']
+    needs: build
     steps:
       - name: Upload prod
         uses: jdickey/bash@v.1.1.1
         with:
-          args: cd $HOAGDAX_PATH && git pull hoagnetwork/media-server:latest && docker-compose rm -sf back && docker-compose up -d --force-recreate 
+          args: cd /home/johan/hoagdax/ && docker pull hoagnetwork/media-server:latest && docker-compose rm -sf back && docker-compose up -d --force-recreate 
     
         
       
