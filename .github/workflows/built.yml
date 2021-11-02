@@ -34,13 +34,16 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
   publish:
     name: Publish on production
-    runs-on: ['self-hosted', 'prod']
+    runs-on: ubuntu-20.04
     needs: build
     steps:
-      - name: Upload prod
-        uses: jdickey/bash@v.1.1.1
+      - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2
         with:
-          args: cd /home/johan/hoagdax/ && docker pull hoagnetwork/media-server:latest && docker-compose rm -sf back && docker-compose up -d --force-recreate 
-    
-        
+          key: ${{ secrets.SSH_PRIVATE_KEY }}     
+          known_hosts: 'just-a-placeholder-so-we-dont-get-errors'
+      - name: Adding Known Hosts
+        run: ssh-keyscan ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+      - name: Deploy on production
+        run: ssh ${{ secrets.USER_SSH }}@${{secrets.SSH_HOST2 }} "${{ secrets.SSH_COMMAND_DEPLOY }}"
       
