@@ -1,0 +1,308 @@
+openapi: 3.0.1
+info:
+  title: Media Server
+  description: "plug'n play products enable live streaming platforms to keep ownership of their content. Our code leverages peer-to-peer technology from  [Solana Blockchain](https://solana.com)"
+  license:
+    name: MIT
+    url: https://github.com/hoag-network/media-server/blob/main/LICENSE
+  version: 0.2.2
+servers:
+  - url: https://{server}/api/v1
+    variables:
+      server:
+        default: play.hoag.network
+tags:
+  - name: login
+    description: Login endpoint
+  - name: streams
+    description: Streams in real time
+  - name: relay
+    description: Operation over relay server
+  - name: server
+    description: Main server info
+paths:
+  /public/login:
+    post:
+      tags:
+        - login
+      summary: Endpoint for authenticate into media server.
+      operationId: login
+      requestBody:
+        description: User and password for login
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/login'
+            example:
+              user: my_user_admin
+              password: my_ultra_secret_password
+        required: true
+      responses:
+        '200':
+          $ref: '#/components/responses/credentials_success'
+        '400':
+          $ref: '#/components/responses/credentials_error'
+  /private/server:
+    get:
+      tags:
+        - server
+      summary: Endpoint for receive hardware info about media server.
+      operationId: server
+      security:
+        - token_jwt: []
+      responses:
+        '200':
+          $ref: '#/components/responses/server_success'
+        '401':
+          $ref: '#/components/responses/server_error'
+  /public/streams:
+    get:
+      tags:
+        - streams
+      summary: Receive info of all public streams.
+      operationId: get_streams
+      responses:
+        '200':
+          $ref: '#/components/responses/streams_success'
+  /private/streams/creds:
+    get:
+      tags:
+        - streams
+      summary: Endpoint for receive hardware info about media server.
+      operationId: streams_creds
+      security:
+        - token_jwt: []
+      responses:
+        '200':
+          $ref: '#/components/responses/streams_creds_success'
+        '401':
+          $ref: '#/components/responses/server_error'
+  /private/streams/trans:
+    post:
+      tags:
+        - streams
+      summary: TODO.
+      operationId: streams_trans
+      security:
+        - token_jwt: []
+      responses:
+        '200': 
+          description: TODO
+  /private/relay:
+    get:
+      tags:
+        - relay
+      summary: TODO.
+      operationId: relay
+      security:
+        - token_jwt: []
+      responses:
+        '200':
+          description: TODO
+  /private/relay/push:
+    post:
+      tags:
+        - relay
+      summary: TODO.
+      operationId: relay_push
+      security:
+        - token_jwt: []
+      responses:
+        '200':
+          description: TODO
+  /private/relay/pull:
+    post:
+      tags:
+        - relay
+      summary: TODO.
+      operationId: relay_pull
+      security:
+        - token_jwt: []
+      responses:
+        '200':
+          description: TODO
+components:
+  schemas:
+    login:
+      required:
+        - user
+        - password
+      type: object
+      properties:
+        user:
+          type: string
+        password:
+          type: string
+    credentials_error:
+      type: object
+      properties:
+        error:
+          type: string
+    credentials_success:
+      type: object
+      properties:
+        token:
+          type: string
+    streams_creds:
+      type: object
+      properties:
+        name:
+          type: string
+        key:
+          type: string
+        rtmp_url:
+          type: string
+        cdn_url:
+          type: string
+  responses:
+    credentials_error:
+      description: An error occurred in login process
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/credentials_error'
+          examples:
+            credentials:
+              value:
+                error: Invalid Credentials
+            parameters:
+              value:
+                error: All input is required
+    credentials_success:
+      description: Login successfully
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/credentials_success'
+          example:
+            token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW5fbkFnZVJiaXIiLCJpYXQiOjE2MzczODIzODksI6MTYzNzM4OTU4OX0.RIpKpbd4Bl8li5WgxnTZ6Ok_M9R_uXJ3
+    server_error:
+      description: Bad token
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/credentials_error'
+          examples:
+            Bad token:
+              value:
+                error: Invalid token
+            Without token header:
+              value:
+                error: A token is required for authentication
+    server_success:
+      description: Valid token
+      content:
+        application/json:
+          example:
+            os:
+              arch: x64
+              platform: linux
+              release: 5.4.0-1055-aws
+            cpu:
+              num: 2
+              load: 5
+              model: Intel(R) Xeon(R) Platinum 8175M CPU @ 2.50GHz
+              speed: 2500
+            mem:
+              total: 4064714752
+              free: 290619392
+            net:
+              inbytes: 281472584498
+              outbytes: 284880561866
+            nodejs:
+              uptime: 1569255
+              version: v15.14.0
+              mem:
+                rss: 72327168
+                heapTotal: 16457728
+                heapUsed: 12735464
+                external: 6394987
+                arrayBuffers: 5475701
+            clients:
+              accepted: 134
+              active: 6
+              idle: 0
+              rtmp: 6
+              http: 0
+              ws: 0
+            version: 0.2.0
+    streams_success:
+      description: Public streams in real time.
+      content:
+        application/json:
+          example:
+            live:
+              m0OXCOnP:
+                publisher:
+                  app: live
+                  stream: m0OXCOnP
+                  clientId: KENKPRES
+                  connectCreated: '2021-11-02T00:57:25.652Z'
+                  bytes: 17413326555
+                  ip: '::ffff:52.53.184.226'
+                  audio:
+                    codec: AAC
+                    profile: LC
+                    samplerate: 44100
+                    channels: 1
+                  video:
+                    codec: H264
+                    width: 640
+                    height: 360
+                    profile: Baseline
+                    level: 3
+                    fps: 30
+                subscribers:
+                  - app: live
+                    stream: m0OXCOnP
+                    clientId: 2M12WTR9
+                    connectCreated: '2021-11-02T00:57:25.664Z'
+                    bytes: 18571725210
+                    ip: '::ffff:127.0.0.1'
+                    protocol: rtmp
+              UZK8tu5r:
+                publisher:
+                  app: live
+                  stream: UZK8tu5r
+                  clientId: H8O5NUTS
+                  connectCreated: '2021-11-02T00:57:25.726Z'
+                  bytes: 168573741915
+                  ip: '::ffff:52.53.184.226'
+                  audio:
+                    codec: MP3
+                    profile: ''
+                    samplerate: 44100
+                    channels: 2
+                  video:
+                    codec: H264
+                    width: 1280
+                    height: 720
+                    profile: High
+                    level: 3.1
+                    fps: 24
+                subscribers:
+                  - app: live
+                    stream: UZK8tu5r
+                    clientId: MTHQ6ERH
+                    connectCreated: '2021-11-02T00:57:25.734Z'
+                    bytes: 169653351278
+                    ip: '::ffff:127.0.0.1'
+                    protocol: rtmp
+    streams_creds_success:
+      description: Valid token
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/streams_creds'
+          example:
+            name: r2jA7thZ
+            key: r2jA7thZ?pwd=b54996
+            rtmp_url: rtmp://qmzh8mkfgz.medianet.work/live/
+            cdn_url: https://qmzh8mkfgz.medianet.work
+            
+  securitySchemes:
+    token_jwt:
+      type: apiKey
+      name: x-access-token
+      in: header
+
