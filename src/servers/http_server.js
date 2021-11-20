@@ -17,9 +17,8 @@ const context = require('../core/ctx');
 const ip = require("ip");
 const cors = require("cors");
 const YAML = require('yamljs');
-const swaggerDocument = YAML.load('../docs/api-swagger.yaml');
+const swaggerDocument = YAML.load(global.BasePath + '/api-docs/api-swagger.yaml');
 const swaggerUi = require('swagger-ui-express');
-
 const streamsRoute = require('../api/routes/streams');
 const streamsPrivateRoute = require('../api/routes/private/streams');
 const serverRoute = require('../api/routes/server');
@@ -89,7 +88,7 @@ class NodeHttpServer {
       app.use('/api/v1/private/streams', streamsPrivateRoute(context));
       app.use('/api/v1/private/server', serverRoute(context));
       app.use('/api/v1/private/relay', relayRoute(context));
-      app.use('/api/v1/docs/', swaggerUi.serve, swaggerUi.setup(swaggerDocument);
+      app.use('/api/v1/docs/', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
     }
 
     app.use(Express.static(path.join(__dirname + '/public')));
